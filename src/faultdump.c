@@ -431,19 +431,6 @@ int mcd_faultdump(mcd_output_mode_t output_mode)
 }
 
 /**
- * @brief Core dump via serial output (similar to trigger_dump.c after_assert_fail)
- *
- * This function generates and prints core dump data via serial port,
- * which is useful when flash storage is not available or desired.
- *
- * @return int MCD_OK on success, error code on failure
- */
-static int mcd_serial_coredump(void)
-{
-    return mcd_faultdump_ex(MCD_OUTPUT_SERIAL);
-}
-
-/**
  * @brief Print coredump from memory buffer via serial output
  *
  * This function reads coredump data from memory buffer and prints it via serial port
