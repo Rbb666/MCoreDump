@@ -24,6 +24,8 @@ typedef struct
 /* Architecture-specific exception hook function */
 #ifdef PKG_USING_MCOREDUMP_ARCH_ARMV7M
 #define arch_hard_fault_exception_hook armv7m_hard_fault_exception_hook
+#elif defined(PKG_USING_MCOREDUMP_ARCH_ARMV8M)
+#define arch_hard_fault_exception_hook armv8m_hard_fault_exception_hook
 #else
 #error "MCoredump does not support this architecture"
 #endif

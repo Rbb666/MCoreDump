@@ -17,7 +17,7 @@
 extern "C" {
 #endif
 
-struct armv7m_core_regset
+struct armv8m_core_regset
 {
     uint32_t r0;
     uint32_t r1;
@@ -59,7 +59,7 @@ struct arm_vfpv2_regset
     uint32_t fpscr;
 };
 
-typedef struct armv7m_core_regset    core_regset_type;
+typedef struct armv8m_core_regset    core_regset_type;
 typedef struct arm_vfpv2_regset      fp_regset_type;
 
 #ifdef __cplusplus
