@@ -234,8 +234,8 @@ RW_IRAM2 (0x20000000 + (0x00020000 - 0x2400)) UNINIT 0x2400  {
 #### CPU 异常部分
 
 * cortex-m3 请参考此 [PR](https://github.com/RT-Thread/rt-thread/pull/10619) 的内容进行修改
-
 * cortex-m4 请参考此 [PR](https://github.com/RT-Thread/rt-thread/pull/10618) 的内容进行修改
+* cortex-m33 请参考此 [PR](https://github.com/RT-Thread/rt-thread/pull/10624) 的内容进行修改
 
 ### 1. 启用组件
 
