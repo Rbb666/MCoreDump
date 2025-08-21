@@ -317,8 +317,8 @@ static void minidump_thr_rset(struct thread_info_ops *ops, int32_t idx,
                               core_regset_type *core_regset,
                               fp_regset_type *fp_regset)
 {
-    mcd_memcpy(core_regset, &current_core_regset, sizeof(core_regset_type));
-    mcd_memcpy(fp_regset, &current_fp_regset, sizeof(fp_regset_type));
+    mcd_memcpy(core_regset, get_cur_core_regset_address(), sizeof(core_regset_type));
+    mcd_memcpy(fp_regset, get_cur_fp_regset_address(), sizeof(fp_regset_type));
 }
 
 static int32_t minidump_mem_cnts(struct thread_info_ops *ops)
@@ -344,12 +344,12 @@ void mcd_mini_dump_ops(struct thread_info_ops *ops)
     ops->priv = NULL;
 }
 
-core_regset_type *get_cur_core_regset_address()
+core_regset_type *get_cur_core_regset_address(void)
 {
     return &current_core_regset;
 }
 
-fp_regset_type *get_cur_fp_regset_address()
+fp_regset_type *get_cur_fp_regset_address(void)
 {
     return &current_fp_regset;
 }
