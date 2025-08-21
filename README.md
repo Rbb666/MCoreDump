@@ -1,5 +1,7 @@
 # MCoreDump - 嵌入式系统故障转储组件
 
+> *喜欢这个项目吗？欢迎 Star ⭐️ 以帮助改进！*
+
 ## 📑 目录
 - [📖 组件介绍](#-组件介绍)
 - [🚀 主要特性](#-主要特性)
@@ -20,13 +22,13 @@
 - [🤝 贡献指南](#-贡献指南)
 - [📄 许可证](#-许可证)
 
-> *喜欢这个项目吗？欢迎 Star ⭐️ 以帮助改进！*
-
 
 
 ## 📖 组件介绍
 
 MCoreDump（mini-coredump） 是专为嵌入式系统设计的故障转储（CoreDump）组件，能够在系统发生硬故障（Hard Fault）、断言失败或其他异常情况时，自动生成标准 ELF 格式的核心转储文件，用于离线调试和故障分析。
+
+ <img src="docs/mcoredump.png" style="zoom:30%;" />
 
 
 
@@ -258,20 +260,35 @@ scons
 # 启动系统，MCoreDump 会自动初始化
 ```
 
-### 3. 基本使用示例
+### 3. 基本使用
 
-```c
-#include "coredump.h"
+1. 系统正常启动，会自动打印 MCoreDump 相关信息，包括：coredump 缓存区起始地址，缓冲区大小
 
-// 使用自定义函数调用 CoreDump
-void user_func(void) {
-    ...
-    mcd_faultdump(MCD_OUTPUT_SERIAL);
-    ...
-}
-```
+> 演示第一次启动没有触发过异常因此会显示：”No valid coredump found in memory.“
 
+ ![](docs/startup.png)
 
+2. 手动输入 `mcd_test FAULT` 触发非法地址访问异常，并触发硬件 fault，此时会打印出 coredump 信息。
+
+ <img src="docs/mcd_test.png" style="zoom:80%;" />
+
+3. 芯片进行复位后，会打印 ”Use 'mcd_dump_memory' command to dump memory to terminal.“
+
+>  由于 coredump 缓存区被定义到了 noinit 段，除非没有硬件断情况发生否则会正常的如下图所示
+
+ ![](docs/dump_memory.png)
+
+4. 此时可以在 shell 中输入 `mcd_dump_memory` 将 coredump 信息打印出来。
+
+ ![](docs/dump_meminfo.png)
+
+5. 工具使用：打开 `MCoreDump/tools` 下面的 `coredump.exe` 软件，下图介绍了具体功能字段信息：
+
+ ![](docs/exe.png)
+
+6. 点击 **Begin GDB** 按钮，启动 GDB 调试：
+
+ <img src="docs/begin_gdb.png" style="zoom:80%;" />
 
 ## 📚 API 参考
 
