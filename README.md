@@ -28,7 +28,7 @@
 
 MCoreDump（mini-coredump） 是专为嵌入式系统设计的故障转储（CoreDump）组件，能够在系统发生硬故障（Hard Fault）、断言失败或其他异常情况时，自动生成标准 ELF 格式的核心转储文件，用于离线调试和故障分析。
 
- <img src="docs/mcoredump.png" style="zoom:30%;" />
+ <img src="docs/mcoredump.jpg"  />
 
 
 
@@ -244,10 +244,13 @@ RW_IRAM2 (0x20000000 + (0x00020000 - 0x2400)) UNINIT 0x2400  {
 在 RT-Thread 项目中通过 menuconfig 启用 MCoreDump：
 
 ```bash
-# 进入配置菜单
-scons --menuconfig
+# 更新软件包索引
+pkgs --upgrade-force
 
-# 导航到: RT-Thread Components → tools packages → MCoreDump
+# 进入配置菜单
+menuconfig
+
+# 导航到: RT-Thread online packages → tools packages → MCoreDump
 ```
 
 ### 2. 编译和运行
