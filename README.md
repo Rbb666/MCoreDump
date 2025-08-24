@@ -31,6 +31,9 @@ MCoreDump（mini-coredump） 是专为嵌入式系统设计的故障转储（Cor
  <img src="docs/mcoredump.jpg"  />
 
 
+## 🎞️ 视频介绍
+
+https://www.bilibili.com/video/BV11TeEzFEdf
 
 ## 🚀 主要特性
 
